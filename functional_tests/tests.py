@@ -88,7 +88,7 @@ class NewVisitorTest(LiveServerTestCase):
         inputbox = self.browser.find_element_by_id('id_new_item')
         inputbox.send_keys('Buy peacock feathers')
         inputbox.send_keys(Keys.ENTER)
-        self.wait_for_row_in_list_table('1: Buy peacock Feathers')
+        self.wait_for_row_in_list_table('1: Buy peacock feathers')
 
         # She notices that her list has a unique URL
         edith_list_url = self.browser.current_url
@@ -99,7 +99,7 @@ class NewVisitorTest(LiveServerTestCase):
         # We use a new browser session to make sure that no information 
         # of Edith's is coming through from cookies, etc
         self.browser.quit()
-        self.browser = webdriver.FIrefox()
+        self.browser = webdriver.Firefox()
 
         # Francis visits the home page. There is no sign of Edith's 
         # list
@@ -110,6 +110,7 @@ class NewVisitorTest(LiveServerTestCase):
 
         # Francis starts a new list by entering a new item. He is less 
         # interesting than Edith...
+        inputbox = self.browser.find_element_by_id('id_new_item')
         inputbox.send_keys('Buy milk')
         inputbox.send_keys(Keys.ENTER)
         self.wait_for_row_in_list_table('1: Buy milk')
