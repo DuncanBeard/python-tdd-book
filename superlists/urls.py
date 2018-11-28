@@ -15,17 +15,17 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from lists import views as lists_views, urls as lists_urls
-from accounts import views as accounts_views, urls as accounts_urls
+from lists import views as lists_views
+from lists import urls as lists_urls
+from accounts import urls as accounts_urls
 
 urlpatterns = [
     url(r'^$', lists_views.home_page, name='home'),
     url(r'^lists/', include(lists_urls)),
     url(r'^accounts/', include(accounts_urls)),
-
-    url(r'^$', views.home_page, name='home'),
-    url(r'^lists/(\d+)/$', lists_views.view_list, name='view_list'),
-    url(r'^lists/new$', lists_views.new_list, name='new_list'),
-    url(r'^accounts/.+$', accounts_views.new_list, name='new_list'),
-
 ]
+
+# url(r'^$', views.home_page, name='home'),
+#     url(r'^lists/(\d+)/$', lists_views.view_list, name='view_list'),
+#     url(r'^lists/new$', lists_views.new_list, name='new_list'),
+#     url(r'^accounts/.+$', accounts_views.new_list, name='new_list'),
