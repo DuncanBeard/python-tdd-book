@@ -1,9 +1,11 @@
-from django.shortcuts import render, redirect
-from django.core.mail import send_mail
-from accounts.models import Token
-from django.core.urlresolvers import reverse
-SUCCESS_MESSAGE = "Check your email, we've send you a link you can use to log in."
 from django.contrib import auth, messages
+from django.core.mail import send_mail
+from django.core.urlresolvers import reverse
+from django.shortcuts import redirect, render
+
+from accounts.models import Token
+
+SUCCESS_MESSAGE = "Check your email, we've send you a link you can use to log in."
 
 
 def send_login_email(request):
@@ -26,7 +28,7 @@ def send_login_email(request):
         'noreply@superlists',
         [email]
     )
-    
+
     messages.success(
         request,
         SUCCESS_MESSAGE
